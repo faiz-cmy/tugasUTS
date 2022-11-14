@@ -1,0 +1,102 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+class random {
+    static int jumblangPelanggan = 1250;
+    int jumblahminuman = 4;
+
+    public static String[] lattedontbelatte = new String[400];
+    public static String[] Goyangjiwa = new String[300];
+    public static String[] Jalankenangan = new String[300];
+    public static String[] TanpaRasa = new String[250];
+
+    public static void PrintPembeliKopi() {
+        int totallatte = 0;
+        int totalsisakopi = 0;
+        for (int index = 0; index < lattedontbelatte.length; index++) {
+            if (lattedontbelatte[index] != null) {
+                totallatte--;
+            }
+
+        }
+        int totalgoyang = 0;
+        for (int index = 0; index < Goyangjiwa.length; index++) {
+            if (Goyangjiwa[index] != null) {
+                totalgoyang++;
+            }
+        }
+        int totaljalankenangan = 0;
+        for (int index = 0; index < Jalankenangan.length; index++) {
+            if (Jalankenangan[index] != null) {
+                totaljalankenangan++;
+            }
+        }
+        int totalTanpaRasa = 0;
+        for (int index = 0; index < TanpaRasa.length; index++) {
+            if (TanpaRasa[index] != null)
+                totalTanpaRasa++;
+        }
+            totalsisakopi = jumblangPelanggan - totallatte - totalgoyang - totaljalankenangan - totalTanpaRasa;
+            System.out.println("Jumblah Pelanggan Kopi Latte dont be latte : " + totallatte);
+            System.out.println("Jumblah Pelanggan Kopi Goyang Jiwa         : " + totalgoyang);
+            System.out.println("Jumblah Pelanggan Kopi Jalan Kenangan      : " + totaljalankenangan);
+            System.out.println("Jumblah Pelanggan Kopi Tanpa Rasa          : " + totalTanpaRasa);
+            System.out.println("====================================================");
+
+    }
+    public static void CekIndexAray(String[] myaray, String pelanggan){
+        int indexnew = 0;
+        for (int index = 0; index<myaray.length;index++){
+            if (myaray[index] !=null){
+                indexnew = index+1;
+            }
+        }
+        if (indexnew < myaray.length){
+            myaray[indexnew] = pelanggan;
+        }
+    }
+    public static void simpanpilihan(int Angkarandom, String pelanggan){
+        switch (Angkarandom){
+            case 1 :
+                CekIndexAray(lattedontbelatte,pelanggan);
+                System.out.println("Anda Memilih kopi Latte Don't Be Latte");
+                PrintPembeliKopi();
+                break;
+            case 2 :
+                CekIndexAray(Goyangjiwa,pelanggan);
+                System.out.println("Anda Memilih Kopi Goyang Jiwa");
+                PrintPembeliKopi();
+                break;
+            case 3 :
+                CekIndexAray(Jalankenangan,pelanggan);
+                System.out.println("Anda Memilih Kopi Jalan Kenangan");
+                PrintPembeliKopi();
+                break;
+            case 4 :
+                CekIndexAray(TanpaRasa,pelanggan);
+                System.out.println("Anda Mendapatkan Kopi PAit");
+                break;
+        }
+    }
+    public static void inputpelanggan() {
+        Scanner inputData = new Scanner(System.in);
+        while (true) {
+            System.out.println("menu : ");
+            System.out.println("1. Kopi Latte Don't be Latte");
+            System.out.println("2. Kopi Goyang Jiwa ");
+            System.out.println("3. Kopi Jalan Kenangan ");
+            System.out.println("4. Kopi Pahit");
+            System.out.print("Nama Pelanggan = ");
+            String namapelanggan = inputData.nextLine();
+            System.out.print("Masukan Pilihan Menu Menggunakan Angka : ");
+            int menu = inputData.nextInt();
+            simpanpilihan(menu, namapelanggan);
+            }
+        }
+
+
+    public static void main(String[] args) {
+        inputpelanggan();
+    }
+}
